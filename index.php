@@ -18,7 +18,7 @@ if (!isset($_SESSION)) {
   <body>
     <nav class="navbar navbar-expand-lg navbar-expand-lg navbar-light bg-light pt-2 ps-4 pe-3 shadow-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Poliklinik izzy </a>
+            <a class="navbar-brand" href="index.php">Poliklinik UDINUS </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -118,7 +118,7 @@ if (!isset($_SESSION)) {
                                     <div class="col-lg-7 pt-5">
                                         <div class="text">
                                             <h1>Selamat Datang Admin</h1>
-                                            <h2>Di Poliklinik izzy </h2>
+                                            <h2>Di Poliklinik Udinus </h2>
                                             <h2>Hello, '. $_SESSION['username'] .'</h2>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@ if (!isset($_SESSION)) {
                                                 <div class="text">
                                                     <h1>Sistem Temu Janji </h1>
                                                     <h2>Pasien - Dokter</h2>
-                                                    <p>Selamat datang di Poliklinik izzy , pusat perawatan kesehatan yang berkomitmen menyediakan perhatian 
+                                                    <p>Selamat datang di Poliklinik Udinus , pusat perawatan kesehatan yang berkomitmen menyediakan perhatian 
                                                         medis berkualitas dan solusi terkini untuk Mahasiswa. Tim medis berpengalaman kami siap membantu Anda mencapai kesehatan 
                                                         optimal dengan penuh perhatian. Prioritaskan kenyamanan, kesejahteraan, dan kepuasan pasien bersama kami.
                                                     </p>
@@ -210,9 +210,7 @@ if (!isset($_SESSION)) {
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12 col-12">
-                                        <div class="copyright-content">
-                                            <p>© Copyright 2024  |  All Rights Reserved by <a href="index.php" target="_blank">poliklinik UDINUS.com</a> </p>
-                                        </div>
+
                                     </div>
                                 </div>
                             </div>
