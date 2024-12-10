@@ -10,28 +10,28 @@ if (!isset($_SESSION['username'])) {
 
 if (isset($_POST['simpan'])) {
     if (isset($_POST['id'])) {
-        // Jika terdapat parameter 'id' pada POST, maka ini adalah proses ubah data dokter
+        // Proses update data dokter
         $ubah = mysqli_query($mysqli, "UPDATE dokter SET 
-            nama = '"  . $_POST['nama'] . "',
+            nama = '" . $_POST['nama'] . "',
             alamat = '" . $_POST['alamat'] . "',
             no_hp = '" . $_POST['no_hp'] . "',
-            id_poli = '" . $_POST['id_poli'] . "'
-            WHERE
-            id = '" . $_POST['id'] . "'");
+            id_poli = '" . $_POST['id_poli'] . "',
+            `password` = '" . $_POST['password'] . "'
+            WHERE id = '" . $_POST['id'] . "'");
     } else {
-        // Jika data dokter baru, jalankan query INSERT
-        $tambah = mysqli_query($mysqli, "INSERT INTO dokter (nama, alamat, no_hp, id_poli) 
+        // Proses tambah data dokter
+        $tambah = mysqli_query($mysqli, "INSERT INTO dokter (nama, alamat, no_hp, id_poli, `password`) 
             VALUES (
                 '" . $_POST['nama'] . "',
                 '" . $_POST['alamat'] . "',
                 '" . $_POST['no_hp'] . "',
-                '" . $_POST['id_poli'] . "'
+                '" . $_POST['id_poli'] . "',
+                '" . $_POST['password'] . "'
             )");
     }
-    echo "<script> 
-            document.location='index.php?page=dokter';
-        </script>";
+    echo "<script>document.location='index.php?page=dokter';</script>";
 }
+
 
 if (isset($_GET['aksi'])) {
     if ($_GET['aksi'] == 'hapus') {
@@ -58,6 +58,7 @@ if (isset($_GET['aksi'])) {
                         $alamat = '';
                         $no_hp = '';
                         $id_poli = '';
+                        $password = '';
                         // Jika terdapat parameter 'id' pada URL, ambil data dokter tersebut dari database
                         if (isset($_GET['id'])) {
                             // Jika terdapat parameter 'id', menjalankan query SELECT untuk mengambil data dokter berdasarkan id
@@ -70,6 +71,7 @@ if (isset($_GET['aksi'])) {
                                 $alamat = $row['alamat'];
                                 $no_hp = $row['no_hp'];
                                 $id_poli = $row['id_poli'];
+                                $password = $row['password'];
                             }
                         ?>
                             <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
@@ -105,6 +107,7 @@ if (isset($_GET['aksi'])) {
                                 Poli Dokter
                             </label>
                             <div>
+                                
                                 <select class="form-select" aria-label="id_poli" name="id_poli" >
                                     <option selected>Pilih Poli...</option>
                                     <?php 
@@ -119,6 +122,14 @@ if (isset($_GET['aksi'])) {
                                         }
                                     ?>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label for="password" class="form-label fw-bold">
+                                    Password
+                             </label>
+                            <div>
+                                <input type="text" class="form-control" name="password" id="password" placeholder="Password" value="<?php echo $password ?>">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -139,11 +150,12 @@ if (isset($_GET['aksi'])) {
         <!--thead atau baris judul-->
         <thead>
             <tr class="text-center">
-                <th scope="col">#</th>
+                <th scope="col">No</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Alamat</th>
                 <th scope="col">No Hp</th>
                 <th scope="col">Id Poli</th>
+                <th scope="col">Password</th>
                 <th scope="col">Aksi</th>
             </tr>
         </thead>
@@ -163,6 +175,7 @@ if (isset($_GET['aksi'])) {
                     <td><?php echo $data['alamat'] ?></td>
                     <td><?php echo $data['no_hp'] ?></td>
                     <td class="text-center"><?php echo $data['id_poli'] ?></td>
+                    <td><?php echo $data['password'] ?></td>
                     <td  class="d-flex justify-content-center ">
                         <div class="d-flex gap-2 mb-3">
                             <a type="button" class="btn btn-success rounded-pill px-3" href="index.php?page=dokter&id=<?php echo $data['id'] ?>">

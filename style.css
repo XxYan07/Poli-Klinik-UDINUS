@@ -155,11 +155,11 @@ nav ul li a:hover {
 	Start Hero Area CSS
 =============================*/
 .slider .single-slider {
-	height: 700px;
+	height: 500px;
 	background-size: cover;
 	background-position: center;
 	background-repeat:no-repeat;
-    background-image: url('img/Rumahsakit.jpg');
+    background-image: url('img/Rumah.jpg');
     
 }
 .slider .single-slider .text{

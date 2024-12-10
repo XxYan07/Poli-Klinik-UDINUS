@@ -148,6 +148,7 @@ if (isset($_GET['aksi'])) {
                     <td><?php echo $data['nama_obat'] ?></td>
                     <td class="text-center"><?php echo $data['kemasan'] ?></td>
                     <td class="text-center"><?php echo $data['harga'] ?></td>
+                    <td class="text-center"><?php echo $data['Stok'] ?></td>
                     <td class="d-flex justify-content-center ">
                         <div class="d-flex gap-2 mb-3">
                             <a type="button" class="btn btn-success rounded-pill px-3" href="index.php?page=obat&id=<?php echo $data['id'] ?>">

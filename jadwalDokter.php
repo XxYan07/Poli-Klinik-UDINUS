@@ -1,4 +1,5 @@
 <?php
+include('koneksi.php');
 if (!isset($_SESSION)) {
     session_start();
 }
@@ -11,15 +12,20 @@ if (!isset($_SESSION['nama'])) {
 if (isset($_POST['simpan'])) {
     // Cek apakah ada data 'id' dalam $_POST
     if (isset($_POST['id'])) {
+            //set semua status jadwal dokter non aktif 
+            $nonaktifkan = mysqli_query($mysqli, "UPDATE jadwal_periksa SET 
+                 status = '1'
+                 WHERE 
+                 status = '0'");
         // Jika ada, jalankan query UPDATE untuk mengubah data jadwal periksa
         $ubah = mysqli_query($mysqli, "UPDATE jadwal_periksa SET 
-            id_dokter = '".$_SESSION['id']."',
-            hari = '" . $_POST['hari'] . "',
-            jam_mulai = '" . $_POST['jam_mulai'] . "',
-            jam_selesai = '" . $_POST['jam_selesai'] . "',
-            status = '" . (isset($_POST['status']) ? $_POST['status'] : 0) . "'
-            WHERE 
-            id = '" . $_POST['id'] . "'");
+        id_dokter = '".$_SESSION['id']."',
+        hari = '" . $_POST['hari'] . "',
+        jam_mulai = '" . $_POST['jam_mulai'] . "',
+        jam_selesai = '" . $_POST['jam_selesai'] . "',
+        status = '" . (isset($_POST['status']) ? $_POST['status'] : 0) . "'
+        WHERE 
+        id = '" . $_POST['id'] . "'");
     } else { 
         // Jika tidak ada, jalankan query INSERT untuk menambahkan data jadwal periksa baru
         $tambah = mysqli_query($mysqli, "INSERT INTO jadwal_periksa (id_dokter, hari, jam_mulai, jam_selesai, status) 

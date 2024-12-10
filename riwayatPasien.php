@@ -20,7 +20,7 @@ if (isset($_GET['aksi'])) {
 ?>
 
 
-<h2>Riwayat Pasien</h2>
+<center><h2>Riwayat Pasien</h2></center>
 <br>
 
 <div class="container">

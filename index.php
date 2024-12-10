@@ -11,14 +11,14 @@ if (!isset($_SESSION)) {
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Poliklinik UDINUS</title>
+    <title>POLI-KLINIK UDINUS</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <nav class="navbar navbar-expand-lg navbar-expand-lg navbar-light bg-light pt-2 ps-4 pe-3 shadow-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.php">Poliklinik UDINUS </a>
+            <a class="navbar-brand" href="index.php"> POLI-KLINIK UDINUS </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -59,6 +59,9 @@ if (!isset($_SESSION)) {
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.php?page=pasien">Pasien</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.php?page=admin">Admin</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="index.php?page=jadwalDokterAdmin">Jadwal Dokter</a>
@@ -137,13 +140,6 @@ if (!isset($_SESSION)) {
                                         <div class="row">
                                             <div class="col-lg-7">
                                                 <div class="text">
-                                                    <h1>Sistem Temu Janji </h1>
-                                                    <h2>Pasien - Dokter</h2>
-                                                    <p>Selamat datang di Poliklinik Udinus , pusat perawatan kesehatan yang berkomitmen menyediakan perhatian 
-                                                        medis berkualitas dan solusi terkini untuk Mahasiswa. Tim medis berpengalaman kami siap membantu Anda mencapai kesehatan 
-                                                        optimal dengan penuh perhatian. Prioritaskan kenyamanan, kesejahteraan, dan kepuasan pasien bersama kami.
-                                                    </p>
-                                                    <span>Poliklinik Unggul dengan Tim Medis Berpengalaman.</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,9 +160,9 @@ if (!isset($_SESSION)) {
                                                         <i class="fa fa-ambulance"></i>
                                                     </div>
                                                     <div class="single-content">
-                                                        <h4>Login Sebagai Pasien</h4>
-                                                        <p>Apabila Anda adalah seorang Pasien, Anda harus hafal minimal 3 lagu dari band Rumah Sakit</p>
-                                                        <a href="index.php?page=daftarPasien" class="btn">MASUK<i class="fa fa-long-arrow-right"></i></a>
+                                                        <center><h4>Masuk Sebagai Pasien</h4></center>
+                                                        <p>Jika Anda adalah pasien, silakan masuk dengan menggunakan nomor rekam medis (RM) yang telah terdaftar.</p>
+                                                        <center><a href="index.php?page=daftarPasien" class="btn">MASUK<i class="fa fa-long-arrow-right"></i></a></center>
                                                     </div>
                                                 </div>
                                             </div>
@@ -178,9 +174,9 @@ if (!isset($_SESSION)) {
                                                         <i class="icofont-prescription"></i>
                                                     </div>
                                                     <div class="single-content">
-                                                        <h4>Login Sebagai Dokter</h4>
-                                                        <p>Apabila Anda adalah seorang Dokter, silahkan Login terlebih dahulu untuk memulai melayani pasien</p>
-                                                        <a href="index.php?page=loginDokter" class="btn">MASUK<i class="fa fa-long-arrow-right"></i></a>
+                                                        <center><h4>Masuk Sebagai Dokter</h4></center>
+                                                        <p>Jika Anda seorang dokter, silakan masuk terlebih dahulu untuk mulai memberikan pelayanan kepada pasien.</p>
+                                                        <center><a href="index.php?page=loginDokter" class="btn">MASUK<i class="fa fa-long-arrow-right"></i></a></center>
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,6 +185,26 @@ if (!isset($_SESSION)) {
                                 </div>
                             </div>
                         </section>
+
+                        <section class="feautes-section mb-5">
+                            <div class="container d-flex justify-content-center">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="section-title">
+                                            <h1>Selamat Datang di Poliklinik Universitas Dian Nuswantoro (Udinus)</h1>
+                                            <h2>Kesehatan Anda, Prioritas Kami</h2>
+                                                    <p>Poliklinik Udinus hadir untuk memberikan pelayanan kesehatan terbaik bagi seluruh civitas akademika Udinus, 
+                                                    termasuk mahasiswa, dosen, dan karyawan. Dengan fasilitas medis yang lengkap dan tenaga medis profesional, 
+                                                    kami berkomitmen untuk mendukung kesehatan dan kesejahteraan Anda, agar Anda dapat terus berkarya dan berprestasi.
+                                                    </p>
+                                                    <span>Poliklinik Unggul dengan Tim Medis Berpengalaman.</span>
+
+                                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>   
+
 
                         <section class="feautes-section mb-5">
                             <div class="container d-flex justify-content-center">
