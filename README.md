@@ -1,5 +1,17 @@
 # Regulation
 <h1>BRYAN KORNELES SAPUTRA FARNEUBUN</h1>
+<h3>langkah-langkah</h3>
+<br>1. Download ZIP file dari gihub</br>
+<br>2. Ekstrak file ZIP</br>
+<br>3. Buka File di Visual Studio Code untuk melihat source code</br>
+<br>4. Buka XAMPP nyalakan apche dan MySQL</br>
+<br>5. Pergi ke phpMyAdmin dan import file SQL dari Repository Github</br>
+<br>6. Buka Browser dan akses localhost/index.php</br>
+
+
+
+
+
 <h1>db: poli, import 'poli.sql'</h1>
 <h2>Sample of Login Credentials</h2>
 <h3>DATABASE</h3>
@@ -8,8 +20,8 @@ username : admin<br>
 password : admin123
 <br>
 <h3>LOGIN DOKTER</h3>
-<br>Bryan Korneles<br>
-password : bryan123
+<br>opsional karena di db terdapat beberapa data dokter di masing-masing bidangnya.<br>
+
 <br>
 <h3>Periksa pasien</h3>
 Login Mneggunakan Nomor Rekam Medis (ini kalo sudah mempunyai akun)

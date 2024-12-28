@@ -9,45 +9,48 @@ if (!isset($_SESSION['nama'])) {
 }
 
 if (isset($_POST['simpan'])) {
-    // Mendapatkan data dari formulir
-    $id_daftar_poli = $_GET['id'];
-    $id_obat = $_POST['id_obat'];
+    $id_daftar_poli = mysqli_real_escape_string($mysqli, $_GET['id']);
+    $id_obat = isset($_POST['id_obat']) ? $_POST['id_obat'] : [];
     $biaya_dokter = 150000;
     $tgl_periksa = date('Y-m-d H:i:s');
-    $catatan = $_POST['catatan'];
+    $catatan = mysqli_real_escape_string($mysqli, $_POST['catatan']);
 
-    // Mengambil harga obat dari database
-    $result = mysqli_query($mysqli, "SELECT harga FROM obat WHERE id = '$id_obat'");
-    $row = mysqli_fetch_assoc($result);
-    $harga = $row['harga'];
+    // Validasi jika tidak ada obat dipilih
+    if (empty($id_obat)) {
+        echo "<script>alert('Pilih minimal satu obat.');</script>";
+        exit;
+    }
 
-    // Menghitung total biaya periksa
+    // Hitung total harga obat
+    $harga = 0;
+    foreach ($id_obat as $obat_id) {
+        $result = mysqli_query($mysqli, "SELECT harga FROM obat WHERE id = '$obat_id'");
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            $harga += $row['harga'];
+        }
+    }
+
+    // Hitung total biaya periksa
     $total = $biaya_dokter + $harga;
 
-    // Menambahkan data periksa ke dalam tabel 'periksa'
+    // Tambahkan data ke tabel 'periksa'
     $tambah = mysqli_query($mysqli, "INSERT INTO periksa (id_daftar_poli, tgl_periksa, catatan, biaya_periksa) 
-        VALUES (
-            '$id_daftar_poli',
-            '$tgl_periksa',
-            '$catatan',
-            '$total'
-        )");
-    // Mendapatkan ID periksa yang baru ditambahkan
+        VALUES ('$id_daftar_poli', '$tgl_periksa', '$catatan', '$total')");
+    
     $id_periksa = mysqli_insert_id($mysqli);
 
-    // Menambahkan data detail periksa ke dalam tabel 'detail_periksa'
-    $sql = "INSERT INTO detail_periksa (id_periksa, id_obat) VALUES ('$id_periksa', '$id_obat')";
-    $tambahdetail = mysqli_query($mysqli, $sql);
+    // Tambahkan data ke tabel 'detail_periksa'
+    foreach ($id_obat as $obat_id) {
+        $sql = "INSERT INTO detail_periksa (id_periksa, id_obat) VALUES ('$id_periksa', '$obat_id')";
+        mysqli_query($mysqli, $sql);
+    }
 
     if (!$tambah) {
         echo "Error: " . mysqli_error($mysqli);
+    } else {
+        echo "<script>alert('Pasien telah diperiksa'); document.location='berandaDokter.php?page=periksa';</script>";
     }
-    
-    echo 
-        "<script> 
-            alert('Pasien telah diperiksa');
-            document.location='berandaDokter.php?page=periksa';
-        </script>";
 }
 
 // Jika terdapat parameter 'aksi' pada URL
@@ -133,16 +136,27 @@ if (isset($_GET['aksi'])) {
                                         Obat
                                     </label>
                                     <div>
-                                        <select class="form-select" aria-label="id_obat" name="id_obat" >
-                                            <option selected>Pilih Obat...</option>
-                                            <?php 
-                                                $result = mysqli_query($mysqli, "SELECT * FROM obat");
+                                    <div class="row mt-1 mb-3">
+    <label for="id_obat" class="form-label fw-bold">Obat</label>
+    <div>
+        <?php 
+            $result = mysqli_query($mysqli, "SELECT * FROM obat");
 
-                                                while ($data = mysqli_fetch_assoc($result)) {
-                                                    echo "<option value='" . $data['id'] . "'>". $data['nama_obat'] . "</option>";
-                                                }
-                                            ?>
-                                        </select>
+            // Menampilkan checkbox untuk setiap obat
+            while ($data = mysqli_fetch_assoc($result)) {
+                echo "
+                    <div class='form-check'>
+                        <input class='form-check-input' type='checkbox' name='id_obat[]' value='" . $data['id'] . "' id='obat" . $data['id'] . "'>
+                        <label class='form-check-label' for='obat" . $data['id'] . "'>
+                            " . $data['nama_obat'] . "
+                        </label>
+                    </div>
+                ";
+            }
+        ?>
+    </div>
+</div>
+
                                     </div>
                                 </div>
                                 

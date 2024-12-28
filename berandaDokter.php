@@ -40,6 +40,9 @@ if (!isset($_SESSION)) {
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="berandaDokter.php?page=jadwalDokter">Jadwal Dokter</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="uptade.php?page=jadwalDokter">Memperbarui Dokter</a>
+                        </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="berandaDokter.php?page=profilDokter&id=<?php echo $_SESSION['id']; ?>">Profil Dokter</a>
                         </li> -->
